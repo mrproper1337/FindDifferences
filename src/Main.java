@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 
 /**
- * Created by mrproper on 13.10.2014.
+ * Created by mrproper on 13.10.2014.g
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
