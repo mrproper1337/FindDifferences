@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:74:p, par l {comp button_prev:::p:215:p, seq t {comp label2:::p::p, space :p:34:p}}, space ::29:x, par l {comp button_next:::p:215:p, seq l {space :p:35:p, comp label3:::p::p}}, space :p:81:p}, seq t {space :::p, comp label4:::p:154:p, space ::223:x, comp label1:::p:217:p, space :p:14:p}}"
-			"$verticalGroup": "par l {seq l {par l {comp label1:::p:36:p, seq {space :::p, comp label4:::p:36:p}}, space :p:30:p, par t {comp label2:::p::p, comp label3:::p::p}, space :0:70:x, par l {comp button_prev::l:p::p, comp button_next::l:p::p}, space ::11:x}}"
+			"$horizontalGroup": "par l {seq {space :p:74:p, par l {comp button_prev:::p:215:p, seq t {comp label2:::p::p, space :p:34:p}}, space ::29:x, par l {comp button_next:::p:215:p, seq l {space :p:35:p, comp label3:::p::p}}, space :p:81:p}, seq t {space :::p, comp label4:::p:154:p, space u:::p, comp radioButton1:::p::p, space u:::p, comp radioButton2:::p::p, space ::66:x, comp label1:::p:217:p, space :p:14:p}}"
+			"$verticalGroup": "par l {seq l {par l {comp label1:::p:36:p, seq {space :::p, par b {comp label4::b:p:36:p, comp radioButton1::b:p::p, comp radioButton2::b:p::p}}}, space :p:30:p, par t {comp label2:::p::p, comp label3:::p::p}, space :0:70:x, par l {comp button_prev::l:p::p, comp button_next::l:p::p}, space ::11:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -45,9 +45,25 @@ new FormModel {
 				"font": #Font1
 				"horizontalAlignment": 0
 			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton1"
+				"text": "Доміно"
+				"selected": true
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton2"
+				"text": "Фото"
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 5 )
 			"size": new java.awt.Dimension( 630, 385 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 400 )
 		} )
 	}
 }
