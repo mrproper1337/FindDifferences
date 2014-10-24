@@ -25,7 +25,7 @@ public class MainForm extends JFrame {
 
     public MainForm() throws FileNotFoundException {
         initComponents();
-        initmap();
+        initmap(true);
         initmap(task_n);
     }
 
@@ -51,8 +51,8 @@ public class MainForm extends JFrame {
             find_n=0;
             check.clear();
             label1.setText("Знайдено "+find_n+"/4");
-            label2.setIcon(new ImageIcon("res/pic"+task_n+"a.png"));
-            label3.setIcon(new ImageIcon("res/pic" + task_n + "b.png"));
+            label2.setIcon(new ImageIcon("res/dom/pic"+task_n+"a.png"));
+            label3.setIcon(new ImageIcon("res/dom/pic" + task_n + "b.png"));
             label4.setText("Завдання "+task_n);
         }
     }
@@ -64,8 +64,8 @@ public class MainForm extends JFrame {
             find_n=0;
             check.clear();
             label1.setText("Знайдено "+find_n+"/4");
-            label2.setIcon(new ImageIcon("res/pic"+task_n+"a.png"));
-            label3.setIcon(new ImageIcon("res/pic"+task_n+"b.png"));
+            label2.setIcon(new ImageIcon("res/dom/pic"+task_n+"a.png"));
+            label3.setIcon(new ImageIcon("res/dom/pic"+task_n+"b.png"));
             label4.setText("Завдання "+task_n);
         }
     }
@@ -80,6 +80,8 @@ public class MainForm extends JFrame {
         label2 = new JLabel();
         label3 = new JLabel();
         label4 = new JLabel();
+        radioButton1 = new JRadioButton();
+        radioButton2 = new JRadioButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -135,6 +137,13 @@ public class MainForm extends JFrame {
         label4.setFont(new Font("Calibri", Font.BOLD, 24));
         label4.setHorizontalAlignment(SwingConstants.CENTER);
 
+        //---- radioButton1 ----
+        radioButton1.setText("\u0414\u043e\u043c\u0456\u043d\u043e");
+        radioButton1.setSelected(true);
+
+        //---- radioButton2 ----
+        radioButton2.setText("\u0424\u043e\u0442\u043e");
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -156,7 +165,11 @@ public class MainForm extends JFrame {
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(label4, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(radioButton1)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(radioButton2)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                     .addComponent(label1, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
                     .addGap(14, 14, 14))
         );
@@ -167,7 +180,10 @@ public class MainForm extends JFrame {
                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(label4, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(radioButton1)
+                                .addComponent(radioButton2))))
                     .addGap(30, 30, 30)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addComponent(label2)
@@ -180,6 +196,11 @@ public class MainForm extends JFrame {
         );
         pack();
         setLocationRelativeTo(getOwner());
+
+        //---- buttonGroup1 ----
+        ButtonGroup buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(radioButton1);
+        buttonGroup1.add(radioButton2);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -191,30 +212,39 @@ public class MainForm extends JFrame {
     private JLabel label2;
     private JLabel label3;
     private JLabel label4;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    private static void initmap()throws FileNotFoundException{
+    private static void initmap(boolean mode)throws FileNotFoundException{
 
-        File difmap=new File("res/difmap.txt");
-        ArrayList<Integer> il=new ArrayList<Integer>();
-        Integer[] arr=new Integer[0];
+        if(mode){
+            File difmap=new File("res/dom/difmap_d.txt");
+            ArrayList<Integer> il=new ArrayList<Integer>();
+            Integer[] arr=new Integer[0];
 
-        try {
-
-            BufferedReader in = new BufferedReader(new FileReader( difmap.getAbsoluteFile()));
             try {
-                String s;
-                while ((s = in.readLine()) != null) {
-                    for(char a:s.toCharArray())il.add(Character.getNumericValue(a));
-                    map.add(il.toArray(arr));
-                    il.clear();
-                }
-            } finally {
 
-                in.close();
+                BufferedReader in = new BufferedReader(new FileReader( difmap.getAbsoluteFile()));
+                try {
+                    String s;
+                    while ((s = in.readLine()) != null) {
+                        for(char a:s.toCharArray())il.add(Character.getNumericValue(a));
+                        map.add(il.toArray(arr));
+                        il.clear();
+                    }
+                } finally {
+
+                    in.close();
+                }
+            } catch(IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch(IOException e) {
-            throw new RuntimeException(e);
+        }
+        else{
+            File difmap=new File("res/dom/difmap_f.txt");
+            ArrayList<Integer> il=new ArrayList<Integer>();
+            Integer[] arr=new Integer[0];
         }
 
     }
