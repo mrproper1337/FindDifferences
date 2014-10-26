@@ -62,6 +62,7 @@ public class MainForm extends JFrame {
 
             }
             label1.setText("Знайдено "+find_n+"/4");
+            if(find_n==4)JOptionPane.showMessageDialog(null,"Завдання виконано");
         }
     }
 
