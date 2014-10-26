@@ -31,7 +31,6 @@ public class MainForm extends JFrame {
     }
 
     private void label2MouseClicked(MouseEvent e){
-        System.out.println(e.getX()+" "+e.getY()+" йцукш");
         int x,y;
         if(mode){
             x=(e.getX()-4)/30;
