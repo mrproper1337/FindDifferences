@@ -90,10 +90,8 @@ public class MainForm extends JFrame {
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         }
-
         initmap(task_n);
         reset();
-
     }
 
     private void initComponents() {
@@ -293,7 +291,6 @@ public class MainForm extends JFrame {
 
     }
     private boolean cmp_m(int x,int y){
-
         for(int i=0;i<current_m.get(0).length;i++)
             if(y==current_m.get(0)[i] && x==current_m.get(1)[i] && !check.contains(i)){
                 find_n++;
