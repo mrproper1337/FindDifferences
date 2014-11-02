@@ -11,10 +11,9 @@ import javax.swing.GroupLayout;
 
 
 /**
- * @author unknown
+ * @author mrproper
  */
 public class MainForm extends JFrame {
-
 
     static ArrayList<Integer[]> map=new ArrayList();
     static ArrayList<Integer[]> current_m=new ArrayList();
@@ -41,12 +40,6 @@ public class MainForm extends JFrame {
         }
         Graphics gr1=label2.getGraphics();
         Graphics gr2=label3.getGraphics();
-
-//        if(!mode)for(int i=0;i<4;i++){
-//            Image select=new ImageIcon("res/select2.png").getImage();
-//            gr1.drawImage(select,(current_m.get(1)[i])*40,(current_m.get(0)[i])*40,null);
-//            gr2.drawImage(select,(current_m.get(1)[i])*40,(current_m.get(0)[i])*40,null);
-//        }
 
         if(cmp_m(x,y)){
             if (gr1 != null && gr2 != null) {
